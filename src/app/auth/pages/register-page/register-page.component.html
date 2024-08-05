@@ -1,0 +1,64 @@
+<form (ngSubmit)="this.submit()">
+  <div class="form-floating mt-4">
+    <input type="text" [(ngModel)]="this.creationInfo.username" name="username" required
+      class="form-control fs-5 {{ this.creationInfo.username && this.invalidUsername() ? 'is-invalid' : '' }}" id="username"
+      placeholder="Nombre de usuario">
+    <label for="username">Nombre de usuario</label>
+    @if (this.creationInfo.username && this.invalidUsername()) {
+    <div class="invalid-feedback" id="username-feedback">
+      Nombre de usuario inválido.
+    </div>
+    }
+   </div>
+
+  <div class="form-floating mt-4">
+    <input type="email" [(ngModel)]="this.creationInfo.email" name="email" required
+      class="form-control fs-5 {{ this.creationInfo.email && this.invalidEmail() ? 'is-invalid' : '' }}" id="email"
+      placeholder="nombre@ejemplo.com">
+    <label for="email">Correo electrónico</label>
+    @if (this.creationInfo.email && this.invalidEmail()) {
+    <div class="invalid-feedback" id="email-feedback">
+      Correo inválido.
+    </div>
+    }
+  </div>
+
+  <div class="form-floating mt-4">
+    <input type="password" [(ngModel)]="this.creationInfo.password" name="password" required
+      class="form-control fs-5 {{ this.creationInfo.password && !this.validatePasswordLength() ? 'is-invalid' : '' }}" id="password"
+      placeholder="Contraseña">
+    <label for="password">Contraseña</label>
+    @if (this.creationInfo.password && !this.validatePasswordLength()) {
+    <div class="invalid-feedback" id="password-feedback">
+      Las contraseñas deben ser de entre 8 y 20 caracteres inclusive.
+    </div>
+    }
+  </div>
+
+  <div class="form-floating mt-4">
+    <input type="password" [(ngModel)]="this.confirmPassword" name="confirmPassword" required
+      class="form-control fs-5 {{ this.confirmPassword && !this.passwordsMatch() ? 'is-invalid' : '' }}" id="confirmPassword"
+      placeholder="Confirmar contraseña">
+    <label for="confirmPassword">Confirmar contraseña</label>
+    @if (this.confirmPassword && !this.passwordsMatch()) {
+    <div class="invalid-feedback" id="confirmPassword-feedback">
+      Las contraseñas no coinciden.
+    </div>
+    }
+  </div>
+
+  <input type="submit" (click)="submit()" [disabled]="!this.validForm() || this.AttemptingRegistration()" maxlength="254" class="btn {{ this.SuccessRegistration() ?
+  'btn-success' : 'btn-primary' }} w-100 mt-4 fw-semibold fs-5 shadow-sm" id="register-button" value="Registrarse">
+
+  @if (this.FailedRegistration()) {
+  <div class="text-danger is-invalid" style="text-wrap: pretty; text-align: center;">
+    Correo y/o contraseña ya utilizados.
+  </div>
+  }
+
+  <div class="d-flex gap-2 justify-content-center mt-3">
+    <a [routerLink]="'/auth/login'" class="text-decoration-none fs-6 text-secondary fw-semibold">
+      Iniciar sesión
+    </a>
+  </div>
+ </form>

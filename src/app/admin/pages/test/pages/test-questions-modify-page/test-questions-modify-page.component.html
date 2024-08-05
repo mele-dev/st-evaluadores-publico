@@ -1,0 +1,13 @@
+<body>
+    <div class="d-flex justify-content-center pt-3">
+        <h2>Modificar Pregunta</h2>
+    </div>
+
+    <ng-container *ngIf="question">
+        <app-questions-form [question]="question"
+                            [testId]="this.testId" 
+                            [partId]="this.partId" 
+                            (onSubmitQuestion)="onModifyQuestion($event)">
+        </app-questions-form>
+    </ng-container>
+</body>

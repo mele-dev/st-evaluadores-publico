@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="number" class="form-label">Numero de pregunta:</label>
+            <input type="number" class="form-control" id="name" name="name" placeholder="{{this.number}}" [(ngModel)]="this.number">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Pregunta a resolver:</label>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="{{this.description}}" [(ngModel)]="this.description"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Aceptar</button> &nbsp;
+          <a routerLink="./../../" class="btn btn-secondary">Cancelar</a>
+        </form>
+      </div>
+    </div>
+  </div>

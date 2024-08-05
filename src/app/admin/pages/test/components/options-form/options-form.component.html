@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="letter" class="form-label">Letra de la opción</label>
+            <input type="letter" class="form-control" id="letter" name="letter" placeholder="{{this.letter}}" [(ngModel)]="this.letter">
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Introduce la opción</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="{{this.name}}" [(ngModel)]="this.name">
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="correct" [(ngModel)]="this.correct" name="correct">
+            <label class="form-check-label" for="correct">Marcar si la respuesta es correcta</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Aceptar</button> &nbsp;
+          <a routerLink="./../../" class="btn btn-secondary">Cancelar</a>
+        </form>
+      </div>
+    </div>
+  </div>

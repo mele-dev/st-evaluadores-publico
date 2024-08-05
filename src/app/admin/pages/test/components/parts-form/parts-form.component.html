@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="{{this.name}}" [(ngModel)]="this.name">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Descripción:</label>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="{{this.description}}" [(ngModel)]="this.description"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="timelimit" class="form-label">Tiempo límite en minutos:</label>
+            <input type="number" class="form-control" id="timelimit" name="timelimit" placeholder="{{this.timeLimit}}" [(ngModel)]="this.timeLimit">
+          </div>
+          <button type="submit" class="btn btn-primary">Aceptar</button> &nbsp;
+          <a routerLink="./../../" class="btn btn-secondary">Cancelar</a>
+        </form>
+      </div>
+    </div>
+  </div>

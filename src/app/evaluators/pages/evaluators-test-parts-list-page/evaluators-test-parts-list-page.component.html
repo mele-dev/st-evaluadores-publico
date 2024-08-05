@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-center py-5">
+    <h4> </h4>
+</div>
+
+<div class="row mb-4 mx-3">
+
+    <h2 class="text-center h2 mb-4">Partes del test:</h2>
+    <div class="col-4 card card-body w-25 mx-3 rounded-5">
+
+        @for (evaluationTestPart of this.evaluationTestPartsList; track evaluationTestPart){
+        <h3 class="py-2 text-center">{{evaluationTestPart.name}}</h3>
+        <button (click)="this.explainPart(evaluationTestPart.id)" class="btn btn-outline-primary border-0">Explicar
+            parte</button>
+        <hr>
+        } @empty {
+        <p class="text-center">No hay partes disponibles.</p>
+        }
+    </div>
+</div>

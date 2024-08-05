@@ -1,0 +1,165 @@
+<app-evaluation-show (evalEmitter)="this.reciveEvaluation($event)"></app-evaluation-show>
+
+<div class="d-flex justify-content-between">
+
+  <div class="card" style="width: 20rem; background-color: rgb(243, 247, 249);">
+    <div class="card-body">
+      <div class="d-flex flex-row mb-2">
+        <h5 class="card-title flex-start w-100"> Datos de identificación: </h5>
+      </div>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Institución: {{this.gradeReport.evaluationInsitution}}</h6>
+      <p class="card-text">Grupo: {{this.gradeReport.gradeName}} </p>
+      <p class="card-text">Evaluador/a: {{this.gradeReport.userName}} </p>
+      <p class="card-text">Fecha de evaluación: {{this.gradeReport.evaluationDate | date:"short"}}</p>
+    </div>
+  </div>
+  <div>
+    <a class="btn btn-primary" routerLink="/evaluators/{{ this.id }}">Volver a la evaluación</a>
+  </div>
+</div>
+
+<app-observation-card
+  [card]=" { title: 'Motivo de la evaluación', description: this.gradeReport.evaluationMotivo }"></app-observation-card>
+
+<h5 class="strong" style="margin-top: 2mm;">Tecnicas administradas: </h5>
+<div class="dropdown mb-2">
+  <ul class="list-group">
+    @for (test of this.tests; track test) {
+    <button class="btn btn-secondary dropdown-toggle bg-success" style="margin-top: 1mm;" type="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      {{test.name}}
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <p>{{test.description}}</p>
+        {{test.referencias}}
+      </li>
+    </ul>
+    }
+  </ul>
+</div>
+
+<h4 class="strong" style="margin-top: 2mm;">Análisis de los resultados: </h4>
+
+@for (test of this.tests; track test) {
+<app-observation-card [card]=" { title: test.name, description: test.coments }"></app-observation-card>
+}
+
+<div class="d-flex justify-content-center">
+  <img src="evaluadores/assets/Grafica-Lectura.png" alt="Acá va la gráfica"
+    style="width: 130mm; height: 100mm; margin-top: 2mm;">
+  <img src="evaluadores/assets/Grafica-Escritura.png" alt="Acá va la gráfica"
+    style="width: 130mm; height: 100mm; margin-top: 2mm;">
+</div>
+
+
+
+<h5 class="strong" style="margin-top: 5mm;">Puntuaciones alcanzadas por alumno </h5>
+<p> Las pruebas de cribado que fueron aplicadas arrojan puntuaciones en Percentiles.
+  Estos percentiles representan la situación relativa de un alumno con respecto a los otros
+  niños de su grado escolar. El Percentil indica el número de sujetos que se encuentran por
+  debajo de ese valor.
+  A continuación, se presentan los resultados obtenidos por cada alumno.
+</p>
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Categorías</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row" style="background-color: rgb(246, 122, 122)">Riesgo</td>
+    </tr>
+    <tr>
+      <td scope="row" style="background-color: rgb(248, 248, 160)">Promedio</td>
+    </tr>
+    <tr>
+      <td scope="row" style="background-color: rgb(139, 237, 139)">Superior</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-sm" style="margin-top:2mm">
+  <thead>
+    <tr>
+      <th scope="col" style="width:15px">Juniors 2(am)</th>
+      <th scope="col" style="width:15px">Lectura</th>
+      <th scope="col" style="width:15px">Escritura</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">Alumno 1</td>
+      <td style="background-color: rgb(246,122,122)"> 5 </td>
+      <td style="background-color: rgb(246, 122, 122)"> 15 </td>
+    </tr>
+    <tr>
+      <td scope="row">Alumno 2</td>
+      <td style="background-color: rgb(246, 122, 122)"> 20 </td>
+      <td style="background-color: rgb(248, 248, 160)"> 25 </td>
+    </tr>
+    <tr>
+      <td scope="row">Alumno 3</td>
+      <td style="background-color: rgb(246, 122, 122)"> 5 </td>
+      <td style="background-color: rgb(246, 122, 122)"> 10 </td>
+    </tr>
+    <tr>
+      <td scope="row">Alumno 4</td>
+      <td style="background-color: rgb(248, 248, 160)"> 40 </td>
+      <td style="background-color: rgb(248, 248, 160)"> 50 </td>
+    </tr>
+    <tr>
+      <td scope="row">Alumno 5</td>
+      <td style="background-color: rgb(248, 248, 160)"> 25 </td>
+      <td style="background-color: rgb(248, 248, 160)"> 30 </td>
+    </tr>
+    <tr>
+      <td scope="row">Alumno 6</td>
+      <td style="background-color: rgb(246, 122, 122)"> 20 </td>
+      <td style="background-color: rgb(248, 248, 160)"> 25 </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+  <img src="evaluadores/assets/Grafico-Resultados.png" alt="Acá va la gráfica"
+    style="width: 170mm; height: 100mm; margin-top: 2mm;">
+</div>
+
+@for (card of this.generals; track card) {
+<app-observation-card [card]="this.card"></app-observation-card>
+}
+
+<h5 class="strong" style="margin-top: 5mm;">Sugerencias: </h5>
+<div class="card" style="width: 83rem; background-color: rgb(243, 247, 249);">
+  <div class="card-body">
+    <ul>
+      <li>Adaptación curricular con niño XXX:</li>
+      <ul>
+        <li>Situar al alumno cerca de la teacher, lejos de las ventanas u otros elementos
+          que puedan "llamar su atención".</li>
+        <li>Asegurar la comprensión de las explicaciones o de las instrucciones para
+          realizar las tareas (solicitarle que repita lo que ha entendido de la
+          explicación).</li>
+        <li> Permitirle realizar algún desplazamiento por el aula en algún momento (Tener
+          en cuenta que a este alumno le resulta muy costoso permanecer quieto y/o
+          en silencio. Hablar o moverse es un comportamiento funcional para mejorar
+          la estimulación de su córtex sensorial por lo que tiende a combinar
+          movimientos en su sitio o fuera de su sitio con cambios atencionales
+          frecuentes. Por ello, es beneficioso nombrarlo "ayudante en clase" y
+          encargarle ciertas tareas que favorezcan su movilidad en el aula (o incluso
+          fuera de ella).</li>
+        <li> Facilitar estrategias atencionales para realizar las tareas. Por ejemplo: “fíjate
+          que /o que tienes que hacer es ..., y /o debes hacer de este modo ...; no
+          tienes que hacer..”.</li>
+      </ul>
+      <li>Evaluación psicopedagógica a XXX (si aún no se ha realizado)</li>
+      <li> Evaluación psicopedagógica a XXX y aplicación de Cuestionario de TDAH a
+        teacher.</li>
+      <li> Prestar atención al desempeño de XXX y XXX, quiénes también obtuvieron
+        puntuaciones significativamente descendidas en las pruebas de cribado.</li>
+    </ul>
+  </div>
+</div>

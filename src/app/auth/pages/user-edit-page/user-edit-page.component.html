@@ -1,0 +1,102 @@
+<div style="display: flex; justify-content: center; width: 100%;">
+  @if (this.User) {
+  <div class="m-5">
+    <h1 class="h1">Actualizar cuenta</h1>
+
+    <hr>
+    <div style="height: fit-content; width: 36rem;">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control {{
+        UserUpdate
+          && !ruleValidationService.usernameIsValid(this.UserUpdate.username)
+          ? 'is-invalid'
+          : ''
+        }}" [maxlength]=30 id="username" placeholder="{{
+        this.User.username }}" [(ngModel)]="UserUpdate && UserUpdate.username">
+        <label for="username">Nombre de usuario</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control {{
+        UserUpdate && !ruleValidationService.emailIsValid(UserUpdate.email)
+          ? 'is-invalid'
+          : ''
+      }}" id="email" placeholder="{{
+        this.User.email}}" [(ngModel)]="UserUpdate && UserUpdate.email" [maxLength]=254>
+        <label for="email">Correo electrónico</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control {{
+        UserUpdate && !ruleValidationService.passwordIsValid(UserUpdate.password)
+          ? 'is-invalid'
+          : ''
+        }}" id="password" [(ngModel)]="UserUpdate && this.UserUpdate.password" [maxlength]=20 placeholder="">
+        <label for="password">Nueva contraseña</label>
+        @if (UserUpdate && !ruleValidationService.passwordIsValid(UserUpdate.password)) {
+        <div id="invalid-password" class="invalid-feedback">
+          {{ ruleValidationService.getDefaultPasswordErrorMessage() }}
+        </div>
+        }
+      </div>
+
+      <div class="form-floating">
+        <input type="password" class="form-control {{ !validConfirmPassword() ?
+        'is-invalid' : ''}}" id="confirm-password" [(ngModel)]="confirmPassword" [maxlength]=20 placeholder="">
+        <label for="confirm-password">Confirmar nueva contraseña</label>
+        @if (!validConfirmPassword()) {
+        <div id="invalid-confirm-password" class="invalid-feedback">
+          Las contraseñas no coinciden.
+        </div>
+        }
+      </div>
+      <div class="mt-4" style="display: flex;">
+        <div style="width: 100%;">
+          <input [disabled]="!this.validForm()" (click)="this.updatePasswordConfirmationModal.open()" type="submit"
+            name="" class="btn btn-primary fs-5" value="Actualizar">
+        </div>
+        <button type="button" style="width: fit-content; text-wrap: nowrap;" class="btn btn-danger fs-5 float-right"
+          (click)="this.deleteModal.open()">Eliminar</button>
+      </div>
+      <div class="text-danger is-invalid">
+        {{ getErrorMessage() }}
+      </div>
+
+    </div>
+
+    <app-password-required-modal #confirmModal (OnConfirmation)="this.submit($event)"> </app-password-required-modal>
+
+    <!-- Account deletion modal -->
+    <app-card-modal #deleteModal style="text-wrap: pretty; text-align: center;">
+      <h1 class="h1">¿Seguro que desea <em class="text-danger">eliminar</em> su cuenta?</h1>
+      <p class="p"> Esta acción es irreversible. También se eliminarán todas sus
+        evaluaciones.</p>
+
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" (click)="this.deleteModal.close()" class="btn
+        btn-secondary">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="this.confirmDeletion()">Eliminar</button>
+      </div>
+    </app-card-modal>
+    <app-password-required-modal #confirmDeletionModal
+      (OnConfirmation)="this.deleteAccount($event)"></app-password-required-modal>
+  </div>
+
+  } @else {
+  <div style="width: 100%; height: 100vh; display: flex; justify-content: center;
+  align-items: center; transition: background-color 0.2s;" class="{{ this.userFetched ? 'bg-danger-subtle' : '' }}">
+    <div class="mx-5">
+      @if (!this.userFetched) {
+      <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      } @else {
+      <h1 class="h1 text-danger" style="text-wrap: pretty;">Uh oh... Esta cuenta no existe <span
+          class="badge-primary">💀</span>.</h1>
+      <hr>
+      <a routerLink="/auth/register" class="fs-3">¿Crear una cuenta nueva?</a>
+      }
+    </div>
+  </div>
+  }
+</div>

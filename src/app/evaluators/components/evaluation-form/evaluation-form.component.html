@@ -1,0 +1,107 @@
+<div class="d-flex justify-content-center" style="margin-top: 60px">
+  <div class="containter rounded-3" style="border:1px solid rgb(144, 144, 163); background-color: rgb(243, 247, 249);">
+    <form class="row g-3 needs-validation" style="margin-top: 20px; margin-bottom: 20px;" novalidate>
+      <div class="d-flex justify-content-center">
+        <div class="col-md-4">
+          <label for="institution" class="form-label">Institución: </label>
+          <input [(ngModel)]="this.evaluation.institution" [ngModelOptions]="{standalone: true}" type="text"
+            class="form-control" id="institution" placeholder="Debe tener 3 o más caracteres"
+            value="{{this.evaluation.institution}}" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="col-md-4">
+          <label for="description" class="form-label">Descripción: </label>
+          <input [(ngModel)]="this.evaluation.description" [ngModelOptions]="{standalone: true}" type="text"
+            class="form-control" id="description" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="col-md-4">
+          <label for="fecha" class="form-label">Fecha: </label>
+          <input [(ngModel)]="this.selectedDate" [ngModelOptions]="{standalone: true}" type="datetime-local"
+            [min]="this.minDate" [value]="this.minDate" class="form-control" id="" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="col-md-4">
+          <label for="description" class="form-label">Motivo: </label>
+          <input [(ngModel)]="this.evaluation.reason" [ngModelOptions]="{standalone: true}" type="text"
+            class="form-control" id="reason" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="col-md-4">
+          <button type="button" class="btn btn-secondary  dropdown-toggle md-4" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Grados
+          </button>
+          <ul class="dropdown-menu">
+            <div>
+              @for (grade of this.gradesList; track grade) {
+              <input type="checkbox" class="m-2" [id]="grade.id" [value]="grade.id"
+                [checked]="this.evaluation.gradeIds.includes(grade.id)" (change)="onChangesGrade($event, grade.id)">
+              <label>{{ grade.name }}</label>
+              <h1></h1>
+              }
+            </div>
+          </ul>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="col-md-4">
+          <button type="button" class="btn btn-secondary  dropdown-toggle md-4" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Pruebas
+          </button>
+          <ul class="dropdown-menu">
+            <div>
+              @for (test of this.testList; track test) {
+              <input type="checkbox" class="m-2" [id]="test.id" [value]="test.id"
+                [checked]="this.isTestSelected(test.id)" (change)="onChangesTests($event, test)">
+
+              <label>{{ test.initials }}</label>
+              <h1></h1>
+              @if (this.isTestSelected(test.id) && this.test.parts.length > 1){
+              <label class=m-2> Partes: </label>
+              @for (part of this.test.parts; track part) {
+              <h1></h1>
+              <input type="checkbox" class="m-2" [id]="part.id" [value]="part.id"
+                [checked]="this.isPartSelected(test.id,part.id)" (change)="onChangesTestsParts($event, part, test)">
+              <label>{{part.name}}</label>
+              }
+              }
+              <h1></h1>
+              }
+            </div>
+          </ul>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="col-md-4; d-flex justify-content-center">
+          <p></p>
+          <a routerLink="/evaluators" class="btn btn-danger">Volver</a>
+          &nbsp;
+          <button class="btn btn-success" type="submit" (click)="this.onSubmit()">Guardar</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

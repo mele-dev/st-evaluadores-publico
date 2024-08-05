@@ -1,0 +1,38 @@
+.btn {
+    border: none;
+    color: white;
+    padding: 9px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 3px 2;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: white; 
+    color: #008CBA; 
+    border: 2px solid #008CBA;
+  }
+  
+  .btn-primary:hover {
+    background-color: #008CBA;
+    color: white;
+  }
+  
+  .btn-secondary {
+    background-color: white; 
+    color: #ff3333; 
+    border: 2px solid #ff3333;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #ff3333;
+    color: white;
+  }
+
+  .required-indicator {
+    color: red;
+    margin-left: 5px;
+  }

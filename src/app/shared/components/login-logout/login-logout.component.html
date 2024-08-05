@@ -1,0 +1,9 @@
+@if (this.user) {
+<button type="button" (click)="this.logOut()" class="btn btn-primary" alt="logout-button">
+  Cerrar sesion <i class="bi bi-box-arrow-left" style="height: 100%;"></i>
+</button>
+} @else {
+<button [routerLink]="'/auth/login'" type="button" class="btn btn-primary" alt="login-button">
+  Iniciar sesion <i class="bi bi-box-arrow-in-right"></i>
+</button>
+}

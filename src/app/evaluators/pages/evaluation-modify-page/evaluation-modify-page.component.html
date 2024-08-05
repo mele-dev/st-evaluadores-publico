@@ -1,0 +1,5 @@
+@if (this.evaluation){
+<h3 class="d-flex justify-content-center">Evaluation editor</h3>
+<app-evaluation-form (onEvaluationEmitted)="this.put($event)" [evaluation]="this.evaluation"
+  [gradesList]="this.gradesList" [testList]="this.testList"></app-evaluation-form>
+}

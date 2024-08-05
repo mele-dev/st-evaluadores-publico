@@ -1,0 +1,11 @@
+<body>
+
+    <div class="d-flex justify-content-center pt-3">
+        <h2>Modificar grado</h2>
+    </div>
+
+    @if (this.grade) {
+    <app-grades-form [grade]="this.grade" (onGrade)="onModifyGrade($event)"></app-grades-form>
+    }
+
+</body>

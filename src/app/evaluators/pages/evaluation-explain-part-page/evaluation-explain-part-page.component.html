@@ -1,0 +1,40 @@
+<body class="py-5">
+
+    <div class="d-flex align-items-center justify-content-center">
+
+        @if (this.evaluationTestPartToExplain) {
+        <div class="card h-75 mh-75 w-50 rounded-5">
+
+            <div class="m-4">
+                <h2 class="mb-3">Instrucciones:</h2>
+
+                <p>{{this.evaluationTestPartToExplain.description}}</p>
+            </div>
+
+            <hr>
+
+            <div class="m-4">
+                <h2 class="mb-3">Ejemplos:</h2>
+
+                <p>{{this.evaluationTestPartToExplain.exampleDescription}}</p>
+            </div>
+
+            <div class="m-4">
+                <h2 class="mb-3">Preguntas de ejemplo:</h2>
+
+                @for (question of this.questions; track question){
+                <p>{{question.description}}</p>
+                } @empty {
+                }
+            </div>
+
+        </div>
+        }
+
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+        <button (click)="this.startPart()" class="btn btn-lg btn-outline-success">Iniciar Parte</button>
+    </div>
+
+</body>

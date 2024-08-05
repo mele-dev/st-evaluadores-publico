@@ -1,0 +1,16 @@
+<body class="py-5">
+
+    <div class="d-flex justify-content-center mt-5">
+        <h1>Esperando que los estudiantes se unan...</h1>
+    </div>
+
+    <div class="d-flex flex-column align-items-center mt-5">
+        <app-evaluation-users-in-eval [students]="this.students"></app-evaluation-users-in-eval>
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+        <button (click)="this.startEvaluation()" class="btn btn-lg btn-outline-success">Iniciar
+            evaluacion</button>
+    </div>
+
+</body>

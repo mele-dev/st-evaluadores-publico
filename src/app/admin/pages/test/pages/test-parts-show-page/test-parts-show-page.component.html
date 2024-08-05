@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="d-flex justify-content-between w-100 mb-4">
+      <div class="text-center">
+        <h1 class="h3">Lista de Preguntas</h1>
+      </div>
+      <div>
+        <a routerLink="./create/" class="btn btn-success">Crear Pregunta</a>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-4 justify-content-center g-1">
+      <app-questions-list-item
+        *ngFor="let question of questionList"
+        [question]="question"
+        [testId]="this.testId"
+      ></app-questions-list-item>
+    </div>
+  </div>
+</div>

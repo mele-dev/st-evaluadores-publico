@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre:</label>
+          <input type="text" class="form-control" id="name" name="name" minlength="1" maxlength="100"  pattern="^(?! +$)[a-zA-Z\s]{1,}" placeholder="{{this.name}}" [(ngModel)]="this.name" required>
+          <span class="required-indicator">*Requerido  </span>
+        </div>
+        <div class="mb-3">
+          <label for="initials" class="form-label">Iniciales:</label>
+          <input type="text" class="form-control" id="initials" name="initials" minlength="1" maxlength="100" pattern="^(?! +$)[a-zA-Z\s]{1,}" placeholder="{{this.initials}}" [(ngModel)]="this.initials" required>
+          <span class="required-indicator">*Requerido  </span>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Descripción:</label>
+          <textarea class="form-control" id="description" name="description" minlength="1" maxlength="100" pattern="^(?! +$).*$" placeholder="{{this.description}}" [(ngModel)]="this.description" required> </textarea>
+          <span class="required-indicator">*Requerido  </span>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Referencias: (Separado por ;)</label>
+          <textarea class="form-control" id="Referencias" name="Referencias" minlength="1" maxlength="100" pattern="^(?! +$).*$" placeholder="{{this.referenciasCajitas}}" [(ngModel)]="this.referenciasCajitas" required></textarea>
+          <span class="required-indicator">*Requerido  </span>
+        </div>
+        <button type="submit" class="btn btn-primary">Aceptar</button> &nbsp;
+        <a routerLink="/admin/test" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+

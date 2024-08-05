@@ -1,0 +1,59 @@
+<body style="height: 75vh;">
+
+    <div class="row px-5">
+        <div class="col">
+            <button type="button" routerLink="/admin" class="btn btn-outline-success">Volver al menú</button>
+        </div>
+
+        <div class="col d-flex justify-content-end align-items-center">
+            <button type="button" routerLink="search" class="btn btn-outline-success">Buscar por ID</button>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center pb-3">
+        <h1>Lista de grados</h1>
+    </div>
+
+    <div id="recontraMainContainer" class="h-100 d-flex flex-column">
+
+        <div class="h-auto flex-grow-1"></div>
+
+        <div id="mainContainer">
+
+            <div class="d-flex justify-content-center container">
+
+                <ul class="row px-0">
+                    @for (grade of this.gradesList; track grade){
+                    <app-grades-card class="col-md-4 col-sm-6 py-3 d-flex justify-content-center" [grade]="grade"
+                        (deleteEmitter)="deleteGrade($event)"></app-grades-card>
+                    } @empty {
+                    <p>No hay grados disponibles.</p>
+                    }
+                </ul>
+                <!--<ul class="list-group w-50">
+                    <li class="list-group-item">Primer grado <img src="../../images/tick.png" routerLink="modify/1"
+                            class="float-end"></li>
+                    <li class="list-group-item">Segundo grado <img src="../../images/tick.png" routerLink="modify/2"
+                            class="float-end"></li>
+                    <li class="list-group-item">Tercer grado <img src="../../images/tick.png" routerLink="modify/3"
+                            class="float-end"></li>
+                    <li class="list-group-item">Cuarto grado <img src="../../images/tick.png" routerLink="modify/4"
+                            class="float-end"></li>
+                    <li class="list-group-item">etc...</li>
+                </ul>-->
+
+            </div>
+
+            <div class="d-flex justify-content-center pt-3 flex-grow-1">
+                <button type="button" routerLink="create" class="btn btn-outline-primary w-25">Crear grado</button>
+            </div>
+
+        </div>
+
+        <div class="h-auto flex-fill"></div>
+
+    </div>
+
+
+
+</body>

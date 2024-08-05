@@ -1,0 +1,19 @@
+@for (evaluation of this.evaluationsList; track evaluation){
+
+<app-evaluation-card [evaluation]="evaluation" class="col"
+  (onEvaluationDeleted)="this.reciveDelete($event)"></app-evaluation-card>
+
+} @empty {
+<p>No evaluations available.</p>
+}
+
+<app-card-modal #deleteModal style="text-wrap: pretty; text-align: center;">
+  <h1 class="h1">¿Seguro que desea <em class="text-danger">eliminar</em> esta evaluación?</h1>
+  <p class="p"> Esta acción es irreversible.</p>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" (click)="this.deleteModal.close()" class="btn
+          btn-secondary">Cancelar</button>
+    <button type="button" class="btn btn-danger" (click)="this.confirmarDelete()">Eliminar</button>
+  </div>
+</app-card-modal>

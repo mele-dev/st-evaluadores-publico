@@ -1,0 +1,11 @@
+<body>
+    <div class="d-flex justify-content-center pt-3">
+        <h2>Modificar Parte</h2>
+    </div>
+
+    <ng-container *ngIf="part">
+        <app-parts-form [part]="part" 
+                        [testId]="part.testId" 
+                        (onSubmitPart)="onModifyPart($event)"></app-parts-form>
+    </ng-container>
+</body>

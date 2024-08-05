@@ -1,0 +1,10 @@
+<body>
+
+    <div class="d-flex justify-content-center pt-3">
+        <h2>Crear Opción</h2>
+    </div>
+
+    @if (this.question) {  
+    <app-options-form (onSubmitOption)="createOption($event)" [testId]="this.question.testId" [partId]="this.question.partId" [questionId]="this.question.id"></app-options-form>
+    }
+</body>

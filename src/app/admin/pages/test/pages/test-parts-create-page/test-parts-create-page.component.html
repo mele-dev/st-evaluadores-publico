@@ -1,0 +1,10 @@
+<body>
+
+    <div class="d-flex justify-content-center pt-3">
+        <h2>Crear Parte</h2>
+    </div>
+
+    @if (this.test) {  
+    <app-parts-form (onSubmitPart)="createPart($event)" [testId]="this.test.id"></app-parts-form>
+    }
+</body>

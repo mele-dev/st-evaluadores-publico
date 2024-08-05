@@ -1,0 +1,28 @@
+<body class="m-0 d-flex align-items-center">
+    <!--
+        <div class="position-fixed start-0 mx-3">
+            <div class="card card-body bg-grey rounded-5">
+                <h6 class="text-center text-success">Usuarios unidos a la evaluacion</h6>
+    
+                <div class="card rounded-5 d-flex justify-content-center">
+                    <ol>
+                        @for (student of this.students; track student){
+                        <i>🟢 {{student.name}}</i>
+                        <br>
+                        } @empty {
+                        <p class="text-center">No hay estudiantes disponibles.</p>
+                        }
+                    </ol>
+                </div>
+            </div>
+        </div>
+    -->
+    <div class="card card-body text-center w-25 h-100 max-height-75 overflow-auto rounded-5">
+        @for (student of this.students; track student){
+        <h3>🟢 {{student.name}} {{student.lastName}}</h3>
+        } @empty {
+        <p class="text-center">No hay estudiantes disponibles.</p>
+        }
+    </div>
+
+</body>

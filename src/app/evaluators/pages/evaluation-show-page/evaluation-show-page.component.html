@@ -1,0 +1,10 @@
+<div class="m-4">
+    @if (this.evaluation) {
+    <app-evaluation-show (evaluationEmitter)="this.triggerWaitingConenctionEvent($event)"
+        [evaluation]="this.evaluation"></app-evaluation-show>
+    }
+    @else {
+    <h2>No existe una evaluación con ese Id</h2>
+    <a routerLink="/evaluators" class="btn btn-primary">Volver</a>
+    }
+</div>

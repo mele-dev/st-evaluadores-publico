@@ -1,0 +1,14 @@
+<body>
+    <div class="d-flex justify-content-center pt-3">
+        <h2>Modificar Opción</h2>
+    </div>
+
+    <ng-container *ngIf="option">
+        <app-options-form [option]="option"
+                            [questionId]="option.questionId"
+                            [testId]="option.testId" 
+                            [partId]="option.partId" 
+                            (onSubmitOption)="onModifyOption($event)">
+        </app-options-form>
+    </ng-container>
+</body>

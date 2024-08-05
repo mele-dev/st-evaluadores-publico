@@ -1,0 +1,9 @@
+<body>
+    <div class="d-flex justify-content-center pt-3">
+        <h2>Modificar Test</h2>
+    </div>
+
+    <ng-container *ngIf="test">
+        <app-test-form [test]="test" (onSubmitTest)="onModifyTest($event)"></app-test-form>
+    </ng-container>
+</body>

@@ -1,0 +1,10 @@
+<body>
+
+    <div class="d-flex justify-content-center pt-3">
+        <h2>Crear Pregunta</h2>
+    </div>
+
+    @if (this.part) {  
+    <app-questions-form (onSubmitQuestion)="createQuestion($event)" [testId]="this.part.testId" [partId]="this.part.id"></app-questions-form>
+    }
+</body>

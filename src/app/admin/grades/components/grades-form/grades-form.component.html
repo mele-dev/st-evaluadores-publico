@@ -1,0 +1,17 @@
+<form (ngSubmit)="this.onSubmit()" class="row g-3 needs-validation" novalidate>
+    <div class="row d-flex justify-content-center pt-5">
+        <div class="col-md-4">
+            <label for="name" class="form-label">Name</label>
+            <input [(ngModel)]="this.name" type="text" placeholder="{{ this.name }}" class="form-control" id="name"
+                name="name" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center pt-4">
+        <div class="col-6 d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit">Guardar</button>
+        </div>
+    </div>
+</form>

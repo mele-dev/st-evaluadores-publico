@@ -1,0 +1,32 @@
+<div class="card" style="width: 20rem; background-color: rgb(243, 247, 249);">
+    <div class="card-body">
+        <div class="d-flex flex-row mb-2">
+            <h5 class="card-title flex-start w-100"> Nombre: XXX </h5>
+        </div>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Fecha de nacimiento: DD/MM/AA </h6>
+        <p class="card-text">Edad cronológica: X años. </p>
+        <p class="card-text">Curso: X año. </p>
+        <p class="card-text">Institución educativa: Escuela XX </p>
+    </div>
+</div>
+
+<h5 class="strong" style="margin-top: 2mm;">Tecnicas administradas: </h5>
+<div class="dropdown mb-2">
+    <ul class="list-group">
+        @for (test of this.tests; track test) {
+        <button class="btn btn-secondary dropdown-toggle bg-success" style="margin-top: 1mm;" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{test.name}}
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                {{test.content}}
+            </li>
+        </ul>
+        }
+    </ul>
+</div>
+
+
+@for (card of this.cards; track card) {
+<app-observation-card [card]="this.card"></app-observation-card>}

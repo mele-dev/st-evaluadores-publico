@@ -1,0 +1,33 @@
+@if (this.evaluation) {
+<div class="card" style="width: 20rem; background-color: rgb(243, 247, 249);">
+  <div class="card-body">
+    <div class="d-flex flex-row mb-2">
+      <p class="card-title"> <strong>Institución:</strong> {{ this.evaluation.institution }}</p>
+    </div>
+    <p class="card-title"><strong>Fecha:</strong> {{ this.evaluation.date | date:"short" }}</p>
+    <p class="card-text"><strong>Descripción:</strong> {{ this.evaluation.description }}</p>
+    <p class="card-text"><strong>Motivo :</strong> {{ this.evaluation.reason }}</p>
+    <p class="card-text"><strong>Id de la evaluación:</strong> {{ this.evaluation.id }}</p>
+
+    <p class="card-text"><strong>Grados:</strong> {{ this.evaluation.gradeIds }}</p>
+    <p class="card-text"><strong>Reporte grupal:</strong></p>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      @for (gradeid of this.evaluation.gradeIds; track gradeid) {
+        <a (click)="this.emitEval(this.evaluation)" routerLink="/evaluators/observations/groups/{{ this.evaluation.id }}" class="btn btn-outline-primary">{{gradeid}}</a>
+      }
+    </div>
+    <p class="card-text" style= "margin-top:2mm"><strong>Pruebas:</strong> @for (test of this.evaluation.tests; track test) {
+    <h1></h1>
+    <label>● {{ test.initials }} </label>
+    <p class="card-text"><strong><i>Partes de la prueba:</i></strong>
+      @for (part of this.test.parts; track part) {
+      <label class="m-1">{{ part.name }} </label>}
+    </p> }
+    </p>
+    <h1></h1>
+    <a routerLink="/evaluators" class="btn btn-primary">Volver</a>
+    <a (click)="this.emitEvaluation(this.evaluation)" class="btn btn-success ms-2">Habilitar
+      conexion</a>
+  </div>
+</div>
+}
